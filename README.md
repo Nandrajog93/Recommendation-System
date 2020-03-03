@@ -1,6 +1,6 @@
 # Recommendation-System
 
-`3 types of Recommendaiton system.`
+`4 types of Recommendaiton system.`
 
 1) Knowledge based Recommendaiton system 
 2) Content-based Recommendaiton system 
