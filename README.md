@@ -1,14 +1,22 @@
 # Recommendation-System
-Recommednation System 
 
-#### Knowledge Based Recommedantion System
+`3 types of Recommendaiton system.`
+
+1) Knowledge based Recommendaiton system 
+2) Content-based Recommendaiton system 
+3) Collaborative filtering recommendation system
+4) Latent factor analysis
+
+
+### Knowledge Based Recommedantion System
 
 `Recommending movies based on "weighted_rating".` 
+
 
 `Weighted rating function to compute the IMDB weighted rating for each movie.`
 
 
-#### Content based recommendation system
+### Content based recommendation system
 
 
 `Main idea` - Recommend items to the user similar to previous items rated highly or watched by the user.
