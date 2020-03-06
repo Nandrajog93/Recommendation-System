@@ -82,3 +82,67 @@ However, the current user has not expressed interest in that kind of content the
 (Generally, the recommendation system start new users with some kind of average profile based on a system-wide average & over time user profile evolves as user rates more & more items)
 
 
+### Use-User Collaborative filtering recommendation system
+
+
+
+The basic idea behind collaborative filtering is very simple.
+Suppose we have user X to whom you want to make recommendations. What collaborative method does it find a group of other users, whose likes and dislikes are similar to user X
+
+1. Consider user X
+2. Find set N of other users whose ratings are "similar" to X's rating.
+3. Estimate X's ratings based on ratings of users in N.
+
+`Collaborative filtering is of 2 types:`
+
+1) User-User collaborative filtering 2) Item-Item collaborative filtering
+
+`User-User collaborative filtering`
+
+For example, suppose you're doing a movie recommendation. Now this group of users like the same movies that X likes & dislike the same movies that X dislikes.
+We call this set of users, the neighbourhood of users X. Once we find the neighbourhood of users similar to user X, we find other movies that are liked by a lot of users in set N and recommend those items to the users X.
+This is called user-user collaborative filtering.
+
+Item-Item collaborative filtering
+
+1. For item i, find other similar items.
+2. Estimate rating for item i based on ratings for similar items
+3. Use the same similarity metrics & prediction function as we used in the user-user
+model.
+
+In theory, Item-Item collaborative filtering & user-user collaborative filtering are dual approaches but in practice, Item-Item collaborative filtering outperforms user-user collaborative filtering in many use cases because items are "simpler" than "users".
+
+• The item belongs to a small set of "genres", users have varied tastes.
+• Items similarity is more meaningful than user similarity.
+
+Therefore, it turns out that the notion of item similarity is inherently more meaningful than the notion of user similarity.
+
+`Pros: Collaborative filtering`
+
+1. Works for any kind of items without requiring any feature selection.
+This is the biggest advantage of collaborative filtering because it turns out to be a tough problem to find the right set of features and it obviates this need for feature selection for complex things such as images, videos, music so on.
+
+`Cons: Collaborative filtering`
+
+1. Cold Start
+• Need enough users in the system to find a match
+we need to find enough set of similar items for a given item or a set of similar users for a given user but if there are not enough users in the system, it's hard to find a match.
+2. Sparsity
+• The user/rating matrix is sparse
+• Hard to find users that have rated the same items.
+3. First rater
+• Cannot recommend an unrated items • New items, Esoteric items.
+4. Popularity bias
+• Tends to recommend popular items.
+
+Recommending popular items works well but if every item that's recommended is popular can completely crowd out a unique recommendation that can be made for a specific user.
+
+We can overcome the above difficulties by designing Hybrid methods
+
+1. Add the content-based method to collaborative filtering.
+• Add item profile for new item problem & make a recommendation of new items to
+users.
+• We can also take new users and use demographic information about new users to
+build a synthetic profile for them & that deal with the new user problem.
+2. Implement two or more different recommenders and combine predictions perhaps
+using the linear model.
