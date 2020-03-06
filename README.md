@@ -146,3 +146,38 @@ users.
 build a synthetic profile for them & that deal with the new user problem.
 2. Implement two or more different recommenders and combine predictions perhaps
 using the linear model.
+
+
+### Latent factor recommendation system 
+
+
+Latent Matrix Factorization is an incredibly powerful method to use when creating a Recommender System. Ever since Latent Matrix Factorization was shown to outperform other recommendation methods in the Netflix Recommendation contest, its been a cornerstone in building recommender systems.
+
+Latent factor recommendation system tackling the Recommendation problem.
+
+Given a set of m users and n items, and set of ratings from the user for some items, try to recommend the top items for each user. There are many flavours and alternate deviations of this problem, most of which add more dimensions to the problem, like adding tags. What makes Latent Matrix Factorization powerful is that it yields really strong results from the core problem, and can be a good foundation to build from.
+
+`The Approach:`
+
+First, we initialize 2 two matrices from a gaussian distribution (random initialisation). The first one will be a m x k matrix P while the second will be a k x n matrix Q. When these two matrices multiply with each other, they result in an m x n matrix, which is exactly the size of our R matrix in which we are trying to predict.
+Dimension k is one of our hyper-parameters, which represents the number of latent factors we’re using to estimate the R matrix.
+
+With our Matrices P, Q, we’ll optimize their values by using Stochastic Gradient
+Descent. 
+Therefore, you’ll have two more hyper-parameters to optimize, learning rate and epochs. For each Epoch, we’re going to iterate through every known value in our original m x n matrix.
+
+Then, we’ll get an error or residual value e by subtracting the original value by the dot product of the original value in user’s row in P and its item’s column in Q. we’ll update both of the matrices P and Q simultaneously by adding the current row for P and Q by the learning rate times the product of the error times the other Matrix’s values.
+Therefore, we will solve the recommendation as an optimization problem. Find P & Q which minimize the sum of squared error & we are going to predict missing or unknown values.
+
+`Pros: Latent factor`
+
+1) Act as Dimensionality reduction
+when we factorize a m x n matrix into two m x k matrix and k x n matrix we are reducing "n" items to "k" factors.
+K factor can be b/w 10-250
+2) The key is that recommending based on factors is more robust than just using movie similarities, maybe a user hasn’t seen a particular "Content" but the user might have seen other "content" that is related to previous content via some latent factors and those can be used.
+
+`Cons: Latent factor`
+
+1) The main problem is the Cold start problem. 
+2) Can be computational expensive
+
